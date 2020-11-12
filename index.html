@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stringi</title>
+</head>
+<body>
+    <script>
+        const zdanie = prompt(`Proszę wpisać zdanie: `);
+
+        const parametr = prompt(`Proszę podać parametr: `);
+
+        const szukanie = prompt(`Proszę wpisać szukane słowo w tekście: `);
+
+        const imie = prompt(`Proszę podać imię`);
+        imie.toLowerCase();
+        const regula = /[a-ząćęłńóśźż]/;
+        let wynik = 0;
+
+        const space = " ";
+
+        const liczbaznakow = prompt(`Proszę podac liczbe wylosowanych znaków: `);
+
+        document.write(`Wpisany tekst: ${zdanie}`);
+        document.write("<br>");
+        document.write(`Długośc podanego tekstu: ${zdanie.length} liter`);
+        document.write("<br>");
+        if (zdanie.charAt(parametr-1) == " ") document.write(`Na miejscu: ${parametr} jest spacja`);
+        else document.write(`Litera na pozycji: ${parametr}: ${zdanie.charAt(parametr-1)}`);
+        document.write("<br>");
+        if(zdanie.indexOf(szukanie) != -1) document.write(`Ciąg znaków ${szukanie} występuje w tekście`);
+        else document.write(`Ciagu znaków nie ma w podanym tekście!`);
+        document.write("<br>");
+        document.write(zdanie.toUpperCase());
+        document.write("<br>");
+        document.write(zdanie.toLowerCase());
+        document.write("<br>");
+        document.write(zdanie.substr(7));
+        document.write("<br>");
+        document.write(zdanie.substring(0, 7));
+        document.write("<br>");
+        if (imie.match(regula)) {
+            if (imie == "marek") {
+                document.write("Podane imię należy do mężczyzny");
+            } 
+            else if (imie.endsWith("a")) {
+                document.write("Podane imię należy do kobiety.");
+            } 
+            else {
+                document.write("Podane imię należy do mężczyzny.");
+            }
+            document.write('<br>' + "Podane imię posiada: " + imie.length + " liter");
+        } 
+
+        else {
+            document.write("Wprowadzone błedne imię");
+        }
+
+        function samogloski() {
+            for (let i = 0; i < imie.length; i++) {
+
+                if (imie[i] == "a" || imie[i] == "e" || imie[i] == "i" || imie[i] == "o" || imie[i] == "u" || imie[i] == "y" || imie[i] == "ą" || imie[i] == "ę" || imie[i] == "ó") {
+                    wynik++;
+                }
+            }
+            return wynik / 2;
+        }
+
+        if (samogloski() == 0) {
+            document.write('<br>' + "W imieniu nie wystepuja samogłoski");
+        } else {
+            document.write('<br>' + "W imieniu występuje tyle samogłosek: " + samogloski());
+        }
+      
+        
+
+    </script>
+</body>
+</html>
